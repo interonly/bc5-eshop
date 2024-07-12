@@ -12,22 +12,14 @@
         line-height: 26px;
     } 
     .div_visual {
-        height: auto;
+        display: inline-block;
         border: 1px solid black;
-        border-radius: 20px;
         text-align: center;
+        border-radius: 10px;
         margin: 5px;
-        padding: 20px;
+        padding: 10px;
+        font-size: 20px;
     }    
-    a:link, hover, visited, active {
-        text-decoration: none;
-        font-size: 140%;
-        font-weight: 600;
-    }
-    a:hover {
-        font-size: 160%;
-    }
-    
 </style>
 
 
@@ -53,10 +45,10 @@
 </a>
 
 
-{% for new in news %}
-
-    <div class="div_visual">
-        <a href="/news/{{ new.id }}/", style="color: black">  {{ new.title }}  </a>
-    </div>         
-
-{% endfor %}
+<h1 style="text-align: center; font-size:30px; border-bottom: 1px solid black">{{ new.title }}</h1>
+<div class="div_visual", style="text-align: left; font-size: 30px; border: none; text-indent: 40px;">{{ new.article }}</div>
+<div style="display: flex; justify-content: center; gap: 20px;  padding: 20px;"> 
+    <div class="div_visual">Категория: {{ new.category }}</div>
+    <div class="div_visual">Просмотры: {{ new.views }}</div>
+    <div class="div_visual">Уникальные просмотры: {{ new.user_views.count }}</div>
+</div>

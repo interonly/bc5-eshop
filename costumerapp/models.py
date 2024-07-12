@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Costumer(models.Model):
     name = models.CharField(verbose_name="Имя", max_length=100)
-    age = models.IntegerField(verbose_name="Возраст")
+    age = models.IntegerField(verbose_name="Возраст", null=True, blank=True)
     gender = models.CharField(verbose_name="Пол", max_length=50)
     user = models.OneToOneField(
         to=User,

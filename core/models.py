@@ -24,7 +24,9 @@ class Product(models.Model):
     costumer_views = models.ManyToManyField(
         to=Costumer,
         verbose_name="Просмотры пользователей", 
-        default=0)
+        default=0
+    )
+    views_qty = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name

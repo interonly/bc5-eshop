@@ -18,7 +18,7 @@ class New(models.Model):
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    view = models.IntegerField(verbose_name="Общее кол-во просмотров")
+    views = models.IntegerField(verbose_name="Общее кол-во просмотров")
     user_views = models.ManyToManyField(
         to=User,
         verbose_name="Уникальные просмотры пользователей",

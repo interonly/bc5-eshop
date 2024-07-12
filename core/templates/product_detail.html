@@ -22,11 +22,10 @@
 </button>
 </a>
 
-{% for product in products %}
-
-    <div>{{ product.id }}
-        <a href="/product/{{ product.id }}/">{{ product.name }}</a>
-        - {{ product.price }} сом 
-    </div>
-
-{% endfor %}
+<h1>{{ product.name}}</h1>
+<div>{{ product.description }}</div>
+<p>Цена: {{ product.price }}</p>
+<div>Кол-во: {{ product.qty }}</div>
+<div>Категория: {{ product.category }}</div>
+<div>Просмотров: {{ product.views_qty }}</div>
+<div>Уникальные просмотры: {{ product.costumer_views.count }}</div>
