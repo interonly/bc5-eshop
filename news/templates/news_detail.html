@@ -22,26 +22,15 @@
     }    
 </style>
 
-
 <a href ="/">
     <button class="button_style">    
         Главная
-</button>
-</a>
-<a href ="/costumers/">
-    <button class="button_style">    
-        Покупатели
-</button>
-</a>
-<a href ="/news/">
-    <button class="button_style">    
-        Новости
-</button>
+    </button>
 </a>
 <a href ="/admin/">
     <button class="button_style">
-    Админка
-</button>
+        Админка
+    </button>
 </a>
 
 
@@ -52,3 +41,8 @@
     <div class="div_visual">Просмотры: {{ new.views }}</div>
     <div class="div_visual">Уникальные просмотры: {{ new.user_views.count }}</div>
 </div>
+
+<h1>Пользователи, просмотревшие данную новость:</h1>
+{% for user in new.user_views.all %}
+    <h2>{{ user.username }}</h2>
+{% endfor %}

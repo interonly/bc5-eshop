@@ -42,13 +42,6 @@
         Пользователи 
     </button> 
 </a>
-   
 
-{% for product in products %}
-
-    <div>{{ product.id }}
-        <a href="/product/{{ product.id }}/">{{ product.name }}</a>
-        - {{ product.price }} сом 
-    </div>
-
-{% endfor %}
+<p style="font-size:35px">Пользователь: {{ user }}</p>
+<p style="font-size:25px">ФИО: {{ user.first_name }} {{ user.last_name }} </p>

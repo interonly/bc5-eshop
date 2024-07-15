@@ -42,13 +42,13 @@
         Пользователи 
     </button> 
 </a>
-   
 
-{% for product in products %}
+<p style="font-size:35px">Список пользователей:<p>
 
-    <div>{{ product.id }}
-        <a href="/product/{{ product.id }}/">{{ product.name }}</a>
-        - {{ product.price }} сом 
-    </div>
+{% for user in users %}
+
+<div style="margin: 5px; font-size: 25px"> 
+    {{ user.id }}) <a href="user/{{ user.id }}/", style="color: black; text-decoration: none">{{ user.username }}</a>
+</div>
 
 {% endfor %}
