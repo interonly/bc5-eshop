@@ -1,47 +1,9 @@
-<style>
-    .button_style {
-        display: inline-block;
-        cursor: pointer;
-        background-color: white;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #2d3748;
-        border: 1px solid gray;
-        line-height: 26px;
-    }
-</style>
+{% extends 'base.html' %}
 
-<a href ="/">
-    <button class="button_style">    
-        Главная
-    </button>
-</a>
-
-<a href ="/costumers/">
-    <button class="button_style">    
-        Покупатели
-    </button>
-</a>
-
-<a href ="/news/">
-    <button class="button_style">    
-        Новости
-    </button>
-</a>
-
-<a href ="/admin/">
-    <button class="button_style">
-        Админка
-    </button>
-</a>
-
-<a href="/users/"> 
-    <button class="button_style"> 
-        Пользователи 
-    </button> 
-</a>
+{% block content %}
 
 <p style="font-size:35px">Пользователь: {{ user }}</p>
 <p style="font-size:25px">ФИО: {{ user.first_name }} {{ user.last_name }} </p>
+
+{% endblock %}
+

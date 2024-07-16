@@ -1,5 +1,7 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
 from core.views import homepage, product_detail, users_page, user_detail
 from costumerapp.views import costumer_view
 from news.views import news_view, news_detail
@@ -18,4 +20,4 @@ urlpatterns = [
     #news
     path('news/', news_view),
     path('news/<int:id>/', news_detail, name='news-detail'),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

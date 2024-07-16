@@ -1,54 +1,17 @@
-<style>
-    .button_style {
-        display: inline-block;
-        cursor: pointer;
-        background-color: white;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #2d3748;
-        border: 1px solid gray;
-        line-height: 26px;
-    }
-</style>
+{% extends 'base.html' %}
 
-<a href ="/">
-    <button class="button_style">    
-        Главная
-    </button>
-</a>
-
-<a href ="/costumers/">
-    <button class="button_style">    
-        Покупатели
-    </button>
-</a>
-
-<a href ="/news/">
-    <button class="button_style">    
-        Новости
-    </button>
-</a>
-
-<a href ="/admin/">
-    <button class="button_style">
-        Админка
-    </button>
-</a>
-
-<a href="/users/"> 
-    <button class="button_style"> 
-        Пользователи 
-    </button> 
-</a>
+{% block content %}
 
 <p style="font-size:35px">Список пользователей:<p>
-
+    
+<ul>
 {% for user in users %}
 
-<div style="margin: 5px; font-size: 25px"> 
-    {{ user.id }}) <a href="user/{{ user.id }}/", style="color: black; text-decoration: none">{{ user.username }}</a>
-</div>
+    <li style="margin: 5px; font-size: 25px"> 
+    <a href="user/{{ user.id }}/", style="color: black; text-decoration: none">{{ user.username }}</a>
+    </li>
 
 {% endfor %}
+</ul>
+
+{% endblock %}

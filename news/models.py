@@ -12,6 +12,7 @@ class NewsCategory(models.Model):
 class New(models.Model):
     title = models.CharField(verbose_name="Заголовок", max_length=100)
     article = models.TextField(verbose_name="Содержание")
+    photo_url = models.URLField(verbose_name="Ссылка на фото", max_length=200, blank=True, null=True)
     category = models.ForeignKey(
         to=NewsCategory,
         verbose_name="Категория",

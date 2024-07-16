@@ -1,48 +1,28 @@
-<style>
-    .button_style {
-        display: inline-block;
-        cursor: pointer;
-        background-color: white;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #2d3748;
-        border: 1px solid gray;
-        line-height: 26px;
-    } 
-    .div_visual {
-        display: inline-block;
-        border: 1px solid black;
-        text-align: center;
-        border-radius: 10px;
-        margin: 5px;
-        padding: 10px;
-        font-size: 20px;
-    }    
-</style>
+<body class="news-body">
+    {% extends 'base.html' %} 
+    {% block content %}
 
-<a href ="/">
-    <button class="button_style">    
-        Главная
-    </button>
-</a>
-<a href ="/admin/">
-    <button class="button_style">
-        Админка
-    </button>
-</a>
+        <div class="news-main">
+            <h1 class="news-title">{{ new.title }}</h1>
+            <div class="news-title_info"> 
+                <div class="news-views">
+                    <div>🕐Просмотры: {{ new.views }}</div>
+                    <div>👁️Уникальные просмотры: {{ new.user_views.count }}</div>
+                </div>
+                <div>📜Категория: {{ new.category }}</div>
+            </div>
+            <div class="news-article">{{ new.article }}</div>
+            <img src="{{ new.photo_url }}" style="width: 100%">
+            <h1 class="news-title">Пользователи, просмотревшие данную новость:</h1>
+            {% for user in new.user_views.all %}
+                <ul>
+                    <li style="color: #ddd;">{{ user.username }}</li>
+                <ul>
+            {% endfor %}
+        </div>
+
+    {% endblock %}
+</body>
+    
 
 
-<h1 style="text-align: center; font-size:30px; border-bottom: 1px solid black">{{ new.title }}</h1>
-<div class="div_visual", style="text-align: left; font-size: 30px; border: none; text-indent: 40px;">{{ new.article }}</div>
-<div style="display: flex; justify-content: center; gap: 20px;  padding: 20px;"> 
-    <div class="div_visual">Категория: {{ new.category }}</div>
-    <div class="div_visual">Просмотры: {{ new.views }}</div>
-    <div class="div_visual">Уникальные просмотры: {{ new.user_views.count }}</div>
-</div>
-
-<h1>Пользователи, просмотревшие данную новость:</h1>
-{% for user in new.user_views.all %}
-    <h2>{{ user.username }}</h2>
-{% endfor %}

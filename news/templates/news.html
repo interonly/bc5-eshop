@@ -1,52 +1,14 @@
-<style>
-    .button_style {
-        display: inline-block;
-        cursor: pointer;
-        background-color: white;
-        border-radius: 4px;
-        padding: 8px 16px;
-        font-size: 16px;
-        font-weight: 600;
-        color: #2d3748;
-        border: 1px solid gray;
-        line-height: 26px;
-    } 
-    .div_visual {
-        height: auto;
-        border: 1px solid black;
-        border-radius: 20px;
-        text-align: center;
-        margin: 5px;
-        padding: 20px;
-    }    
-    a:link, hover, visited, active {
-        text-decoration: none;
-        font-size: 140%;
-        font-weight: 600;
-    }
-    a:hover {
-        font-size: 160%;
-    }
-    
-</style>
+{% extends 'base.html' %}
 
-<a href ="/">
-    <button class="button_style">    
-        Главная
-    </button>
-</a>
-<a href ="/admin/">
-    <button class="button_style">
-        Админка
-    </button>
-</a>
-
-
+{% block content %}
 
 {% for new in news %}
 
-    <div class="div_visual">
-        <a href="/news/{{ new.id }}/", style="color: black">  {{ new.title }}  </a>
-    </div>         
+    <ul>
+        <li><a href="/news/{{ new.id }}/", style="color: black">  {{ new.title }}  </a></li>
+    </ul>         
 
 {% endfor %}
+
+{% endblock %}
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EShop</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href ="/">
+            <button class="button_style">    
+                Главная
+            </button>
+        </a>
+
+        <a href ="/costumers/">
+            <button class="button_style">    
+                Покупатели
+            </button>
+        </a>
+
+        <a href ="/news/">
+            <button class="button_style">    
+                Новости
+            </button>
+        </a>
+
+        <a href ="/admin/">
+            <button class="button_style">
+                Админка
+            </button>
+        </a>
+
+        <a href="/users/"> 
+            <button class="button_style"> 
+                Пользователи 
+            </button> 
+        </a>
+    </nav>
+
+    {% block content %}
+
+
+
+    {% endblock %}
+
+</body>
+</html>
+
+
+
+
+
