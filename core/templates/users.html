@@ -2,16 +2,12 @@
 
 {% block content %}
 
-<p style="font-size:35px">Список пользователей:<p>
-    
-<ul>
-{% for user in users %}
-
-    <li style="margin: 5px; font-size: 25px"> 
-    <a href="user/{{ user.id }}/", style="color: black; text-decoration: none">{{ user.username }}</a>
-    </li>
-
-{% endfor %}
-</ul>
+    <p style="font-size:35px">Список пользователей:<p>
+        
+    {% for user in users %}
+    <div class="card bg-dark text-white">
+            <a href="user/{{ user.id }}/" class="card-body">{{ user.username }}</a>
+    </div>
+    {% endfor %}
 
 {% endblock %}

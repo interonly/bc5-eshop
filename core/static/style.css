@@ -7,13 +7,22 @@
     font-size: 16px;
     font-weight: 600;
     color: #2d3748;
-    border: 1px solid gray;
+    border: 2px solid gray;
     line-height: 26px;
-  }
-  a:link, hover, visited, active {
+}
+a:link, hover, visited, active {
     text-decoration: none;
-  }
+}
+/* bootstrap */
+.bg-primary {
+    background-color: #212529 !important;
+}
 
+.card {
+    border: 1px solid white !important;
+}
+
+/* news */
 .news-body {
     height: 100%;
     background: #080808;

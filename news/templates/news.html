@@ -2,13 +2,15 @@
 
 {% block content %}
 
-{% for new in news %}
+    <p style="font-size:35px">Новости:<p>
+    <div class="row new-list">
+        {% for new in news %}
 
-    <ul>
-        <li><a href="/news/{{ new.id }}/", style="color: black">  {{ new.title }}  </a></li>
-    </ul>         
-
-{% endfor %}
+            <div class="mt-4 p-5 bg-secondary rounded col-lg-4 col-md-6 col-sm-12">
+                <a href="/news/{{ new.id }}/" style="color: white;"> {{ new.title }} </a>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}
 

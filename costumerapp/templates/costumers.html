@@ -2,10 +2,24 @@
 
 {% block content %}
 
-{% for costumer in costumers %}
-
-<div> {{ costumer.id }}. {{ costumer.name }} | {{ costumer.age }}y.o. | {{costumer.gender}} </div>
-
-{% endfor %}
+    <br>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Имя</th>
+                <th>Возраст</th>
+                <th>Пол</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for costumer in costumers %}
+                <tr>
+                    <td>{{ costumer.name }}</td>
+                    <td>{{ costumer.age }}</td>
+                    <td>{{costumer.gender}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
