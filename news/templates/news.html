@@ -2,15 +2,16 @@
 
 {% block content %}
 
-    <p style="font-size:35px">Новости:<p>
-    <div class="row new-list">
-        {% for new in news %}
+    <h1>Новости:<h1>
 
-            <div class="mt-4 p-5 bg-secondary rounded col-lg-4 col-md-6 col-sm-12">
-                <a href="/news/{{ new.id }}/" style="color: white;"> {{ new.title }} </a>
+    
+    {% for new in news %}
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <p style="text-align: center;"><a href="/news/{{ new.id }}/" style="color: white; font-size: 18px;">{{ new.title }}</a></p>
             </div>
-        {% endfor %}
-    </div>
+        </div>
+    {% endfor %}
 
 {% endblock %}
 

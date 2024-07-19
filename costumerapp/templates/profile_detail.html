@@ -1,0 +1,11 @@
+{% extends 'base.html' %} 
+
+{% block content %}
+    <h1>Профиль</h1>
+    <br>
+    <h3>{{ profile.first_name }} {{ profile.last_name }}</h3>
+    <h5>Био: {{ profile.bio }}</h5>
+    <h5>Соц.сети: <a href="{{ profile.social_link }}">{{ profile.social_link }}</a></h5>
+    <h5>Мобильный телефон: {{ profile.phone_number }}</h5>
+
+{% endblock %}

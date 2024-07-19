@@ -21,6 +21,11 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
+    rating = models.IntegerField(default=0)
+    guarantee = models.DateField(null=True, blank=True)
+    expiration_date = models.DateField(null=True, blank=True)
+    created_at = models.DateTimeField(null=True, auto_now_add=True)
+    updated_at = models.DateTimeField(null=True, auto_now=True)
     costumer_views = models.ManyToManyField(
         to=Costumer,
         verbose_name="Просмотры пользователей", 

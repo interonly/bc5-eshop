@@ -13,8 +13,9 @@
 a:link, hover, visited, active {
     text-decoration: none;
 }
+
 /* bootstrap */
-.bg-primary {
+.bg-primary{
     background-color: #212529 !important;
 }
 

@@ -2,11 +2,11 @@
 
 {% block content %}
 
-    <p style="font-size:35px">Список пользователей:<p>
+    <h1>Список пользователей:<h1>
         
     {% for user in users %}
     <div class="card bg-dark text-white">
-            <a href="user/{{ user.id }}/" class="card-body">{{ user.username }}</a>
+            <p><a href="user/{{ user.id }}/" class="card-body" style="font-size: 18px">{{ user.username }}</a></p>
     </div>
     {% endfor %}
 

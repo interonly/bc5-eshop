@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Профили:</h1>
+    {% for profile in profiles %}
+    <div class="card bg-dark text-white">
+            <a href="profile/{{ profile.id }}/" class="card-body">{{ profile.first_name }}</a>
+    </div>
+    {% endfor %}
+
+{% endblock %}

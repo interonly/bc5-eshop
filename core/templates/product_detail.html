@@ -2,12 +2,12 @@
 
 {% block content %}
 
-<h1>{{ product.name}}</h1>
-<div>{{ product.description }}</div>
-<p>Цена: {{ product.price }}</p>
-<div>Кол-во: {{ product.qty }}</div>
-<div>Категория: {{ product.category }}</div>
-<div>Просмотров: {{ product.views_qty }}</div>
-<div>Уникальные просмотры: {{ product.costumer_views.count }}</div>
+    <h1>{{ product.name }}</h1>
+    <div>{{ product.description }}</div>
+    <p>Цена: {{ product.price }}</p>
+    <div>Кол-во: {{ product.qty }}</div>
+    <div>Категория: {{ product.category }}</div>
+    <div>Просмотров: {{ product.views_qty }}</div>
+    <div>Уникальные просмотры: {{ product.costumer_views.count }}</div>
 
 {% endblock %}

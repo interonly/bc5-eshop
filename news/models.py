@@ -12,14 +12,14 @@ class NewsCategory(models.Model):
 class New(models.Model):
     title = models.CharField(verbose_name="Заголовок", max_length=100)
     article = models.TextField(verbose_name="Содержание")
-    photo_url = models.URLField(verbose_name="Ссылка на фото", max_length=200, blank=True, null=True)
+    photo_url = models.URLField(verbose_name="Ссылка на фото", max_length=200, null=True, blank=True)
     category = models.ForeignKey(
         to=NewsCategory,
         verbose_name="Категория",
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    views = models.IntegerField(verbose_name="Общее кол-во просмотров")
+    views = models.IntegerField(verbose_name="Общее кол-во просмотров",default=0, null=True, blank=True)
     user_views = models.ManyToManyField(
         to=User,
         verbose_name="Уникальные просмотры пользователей",

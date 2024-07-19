@@ -3,6 +3,7 @@ from .models import Product
 from costumerapp.models import Costumer
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from .forms import ProductForm
 
 def homepage(request):
     product_list = Product.objects.all()
@@ -32,6 +33,19 @@ def product_detail(request, id):
         "product": product_object,
     }
     return render(request, 'product_detail.html', context)
+
+def product_create(request):
+    context = {}
+    context["product_form"] = ProductForm()
+
+    if request.method == "GET":
+        return render(request, 'product_create.html', context)
+    if request.method == "POST":
+        product_form = ProductForm(request.POST)
+        if product_form.is_valid():
+            product_form.save()
+            return HttpResponse("Успешно сохранено!")
+        return HttpResponse("Ошибка валидации!")
 
 def users_page(request):
     User = get_user_model()
