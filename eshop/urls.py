@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import homepage, product_detail, product_create, users_page, user_detail
+from core.views import homepage, search, product_detail, product_create, users_page, user_detail
 from costumerapp.views import costumer_view, costumer_create, profile_view, profile_detail, profile_create
 from news.views import news_view, news_detail, new_create
 
@@ -10,6 +10,7 @@ urlpatterns = [
     #general
     path('admin/', admin.site.urls),
     path('', homepage),
+    path('search/', search),
 
     #user
     path('users/', users_page, name='users'),

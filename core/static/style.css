@@ -10,7 +10,7 @@
     border: 2px solid gray;
     line-height: 26px;
 }
-a:link, hover, visited, active {
+a:link /*hover, visited, active*/ {
     text-decoration: none;
 }
 

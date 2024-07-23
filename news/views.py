@@ -1,14 +1,17 @@
 from django.shortcuts import render, redirect
 from .models import New
 from costumerapp.models import Costumer
+from .filters import NewFilter
 
 
 def news_view(request):
     news_list = New.objects.all()
-    context = {"news": news_list}
-
+    filter_object = NewFilter(
+        data=request.GET,
+        queryset=news_list
+    )
+    context = {"filter_object": filter_object}
     return render(request, 'news.html', context)
-
 
 def news_detail(request, id):
     news_object = New.objects.get(id=id)
@@ -47,7 +50,3 @@ def new_create(request):
             article=article,
         )
         return redirect(f"/news/{new_object.id}/")
-        
-    
-    
-

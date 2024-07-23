@@ -4,12 +4,22 @@ from costumerapp.models import Costumer
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from .forms import ProductForm
+from .filters import ProductFilter
 
 def homepage(request):
     product_list = Product.objects.all()
-    context = {"products": product_list}
-
+    filter_object = ProductFilter(
+        data = request.GET,
+        queryset = product_list
+    )
+    context = {"filter_object": filter_object}
     return render(request, 'index.html', context)
+
+def search(request):
+    keyword = request.GET["keyword"]
+    products = Product.objects.filter(name__icontains=keyword)
+    context = {"products": products}
+    return render(request, 'search_result.html', context)
 
 def product_detail(request, id):
     product_object = Product.objects.get(id=id)

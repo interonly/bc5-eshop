@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
 
-    <h1>Новости:<h1>
+    <h1>Новости:</h1>
 
-    
-    {% for new in news %}
+    <p class="row">
+        <form class="col-lg-6" method="get">
+            {% bootstrap_form filter_object.form %}
+            <button class="btn btn-primary">Применить</button>
+        </form>
+    </p>
+
+    {% for new in filter_object.qs %}
         <div class="card bg-dark text-white">
             <div class="card-body">
-                <p style="text-align: center;"><a href="/news/{{ new.id }}/" style="color: white; font-size: 18px;">{{ new.title }}</a></p>
+                <h1 style="text-align: center;"><a href="/news/{{ new.id }}/" style="color: white; font-size: 18px;">{{ new.title }}</a></h1>
             </div>
         </div>
     {% endfor %}
