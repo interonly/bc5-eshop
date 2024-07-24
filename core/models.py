@@ -21,6 +21,11 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
+    photo = models.ImageField(
+        verbose_name="фото",
+        upload_to="profiles/",
+        null=True, blank=True,
+    )
     rating = models.IntegerField(default=0)
     guarantee = models.DateField(null=True, blank=True)
     expiration_date = models.DateField(null=True, blank=True)
@@ -31,7 +36,7 @@ class Product(models.Model):
         verbose_name="Просмотры пользователей", 
         default=0
     )
-    views_qty = models.IntegerField(default=0)
+    views_qty = models.IntegerField(verbose_name="Общее кол-во просмотров" ,default=0)
 
     def __str__(self):
         return self.name

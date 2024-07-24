@@ -3,6 +3,7 @@ from .models import Product
 from costumerapp.models import Costumer
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
+from django.db.models import Q
 from .forms import ProductForm
 from .filters import ProductFilter
 
@@ -17,7 +18,11 @@ def homepage(request):
 
 def search(request):
     keyword = request.GET["keyword"]
-    products = Product.objects.filter(name__icontains=keyword)
+    products = Product.objects.filter(
+        Q(name__icontains=keyword) |
+        Q(description__icontains=keyword) |
+        Q(category__name__icontains=keyword)
+    )
     context = {"products": products}
     return render(request, 'search_result.html', context)
 

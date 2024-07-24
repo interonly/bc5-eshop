@@ -13,9 +13,11 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="/"><img src = "https://i.imgur.com/Xr3CYIi.png" alt="logo" width="60px" height="60px"></a>
-            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <ul class="navbar-nav">
+                <ul class="navbar-nav me-auto">
                     <li class="nav-item">
                         <a class="nav-link active" href="/">Главная</a>
                     </li>
@@ -44,11 +46,12 @@
                     </ul>
                 </li>
                 </ul>
+                <form class="d-flex" action="/search/" method="GET">
+                    <input class="form-control me-2" type="text" placeholder="По содержанию" name="keyword">
+                    <button class="btn btn-secondary">Поиск</button>
+                </form>
           </div>
         </div>
-        <form action="/search/" method="GET">
-            <input type="text" name="keyword"><button>Поиск</button>
-        </form>
     </nav>
     <br>
     <div class="container-fluid p-5 bg-primary text-white text-center">

@@ -30,3 +30,8 @@ class Profile(models.Model):
     bio = models.TextField(verbose_name="Био", null=True, blank=True)
     social_link = models.URLField(verbose_name="соц.сети", max_length=255, null=True, blank=True)
     phone_number = PhoneNumberField(help_text='Контактный номер телефона', verbose_name="Номер телефона", region="KG", max_length=35, null=True, blank=True)
+    photo = models.ImageField(
+        verbose_name="фото",
+        upload_to="profiles/",
+        null=True, blank=True,
+    )
