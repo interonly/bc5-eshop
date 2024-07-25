@@ -9,5 +9,10 @@
     <div>Категория: {{ product.category }}</div>
     <div>Просмотров: {{ product.views_qty }}</div>
     <div>Уникальные просмотры: {{ product.costumer_views.count }}</div>
+    {% if product.image %}
+        <p><img src="/media/{{ product.image }}" alt="" height="250px"></p>
+    {% endif %}
+
+    <a class="btn btn-secondary" href="{% url 'product-update' product.id %}">Изменить</a>
 
 {% endblock %}

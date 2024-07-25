@@ -1,5 +1,7 @@
 from django.db import models
 from costumerapp.models import Costumer
+from django.contrib.auth.models import User
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class ProductCategory(models.Model):
@@ -21,9 +23,9 @@ class Product(models.Model):
         on_delete=models.SET_NULL,
         null=True, blank=True,
     )
-    photo = models.ImageField(
+    image = models.ImageField(
         verbose_name="фото",
-        upload_to="profiles/",
+        upload_to="products/",
         null=True, blank=True,
     )
     rating = models.IntegerField(default=0)
@@ -40,3 +42,19 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Profile(models.Model):
+    user = models.OneToOneField(
+        to=User,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+    )
+    bio = models.TextField(null=True, blank=True)
+    social_link = models.CharField(max_length=100)
+    phone_number = PhoneNumberField(help_text='Контактный номер телефона', verbose_name="Номер телефона", region="KG", max_length=35, null=True, blank=True)
+    photo = models.ImageField(
+        verbose_name="фото",
+        upload_to="profiles/",
+        null=True, blank=True
+    )

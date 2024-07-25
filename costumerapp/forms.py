@@ -1,5 +1,5 @@
 from django import forms
-from .models import Costumer, Profile
+from .models import Costumer
 
 
 class CostumerForm(forms.ModelForm):
@@ -9,15 +9,4 @@ class CostumerForm(forms.ModelForm):
             'name',
             'age',
             'gender',
-        ]
-
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = [
-            'first_name',
-            'last_name',
-            'bio',
-            'social_link',
-            'phone_number',
         ]
