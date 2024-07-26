@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from .models import New
 from costumerapp.models import Costumer
 from .filters import NewFilter
@@ -36,7 +37,6 @@ def news_detail(request, id):
     }
     return render(request, 'news_detail.html', context)
 
-
 def new_create(request):
     if request.method == "GET":
         return render(request, 'new_create.html')
@@ -44,9 +44,9 @@ def new_create(request):
         data = request.POST
         title = data["new_title"]
         article = data["new_article"]
-
         new_object = New.objects.create(
             title=title,
             article=article,
         )
-        return redirect(f"/news/{new_object.id}/")
+        messages.success(request, "Успешно сохранено!")
+        return redirect("news")

@@ -8,12 +8,11 @@ from news.views import *
 urlpatterns = [
     #general
     path('admin/', admin.site.urls),
-    path('', homepage),
+    path('', homepage, name='homepage'),
     path('search/', search),
-
-    #user
-    path('users/', users_list, name='users'),
-    path('user/<int:id>/', user_cabinet, name='user-cabinet'), 
+    path('registration/', registration, name='registration'),
+    path('signin/', signin, name='signin'),
+    path('signout/', signout, name='signout'),
 
     #product
     path('product/<int:id>/', product_detail, name='product-detail'),
@@ -24,7 +23,9 @@ urlpatterns = [
     path('costumers/', costumer_view, name='costumers'),
     path('costumer-create/', costumer_create, name='costumer-create'),
     
-    #profile
+    #profile/user
+    path('users/', users_list, name='users'),
+    path('user/<int:id>/', user_cabinet, name='user-cabinet'), 
     path('profile-create/', profile_create, name ='profile-create'),
     path('profile-update/<int:id>/', profile_update, name='profile-update'),
 
