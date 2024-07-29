@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model, authenticate, login, logout
 from django.db.models import Q
 from .forms import *
 from .filters import ProductFilter
+from django.views import View
 
 def registration(request):
     context = {}
@@ -70,31 +71,33 @@ def search(request):
     context = {"products": products}
     return render(request, 'search_result.html', context)
 
-def product_detail(request, id):
-    product_object = Product.objects.get(id=id)
-    product_object.views_qty += 1
-    if request.user.is_authenticated:
-        user = request.user
-        if not Costumer.objects.filter(user=user).exists():
-            costumer = Costumer.object.create(
-                name=user.username,
-                age=0,
-                gender='-',
-                user=user
-            )
-        costumer = user.costumer
-        product_object.costumer_views.add(costumer)
-    product_object.save()
-    context = { "product": product_object}
-    return render(request, 'Product/detail.html', context)
 
-def product_create(request):
-    context = {}
-    context["product_form"] = ProductForm()
+class ProductDetailView(View):
+    def get(self, request, pk):
+        product_object = Product.objects.get(pk=pk)
+        product_object.views_qty += 1
+        if request.user.is_authenticated:
+            user = request.user
+            if not Costumer.objects.filter(user=user).exists():
+                costumer = Costumer.object.create(
+                    name=user.username,
+                    age=0,
+                    gender='-',
+                    user=user
+                )
+            costumer = user.costumer
+            product_object.costumer_views.add(costumer)
+        product_object.save()
+        context = { "product": product_object}
+        return render(request, 'Product/detail.html', context)
 
-    if request.method == "GET":
+class ProductCreateView(View):
+    def get(self, request):
+        context = {}
+        context["product_form"] = ProductForm()
         return render(request, 'Product/create.html', context)
-    if request.method == "POST":
+
+    def post(self, request):
         product_form = ProductForm(request.POST)
         if product_form.is_valid():
             product_form.save()
@@ -127,12 +130,12 @@ def users_list(request):
     context = {"users": user_list}
     return render(request, 'user_list.html', context)
 
-def profile_create(request):
-    context = {}
-    context["form"] = ProfileForm()
-    if request.method == "GET":
+class ProfileCreateView(View):
+    def get(self, request):
+        context = {}
+        context["form"] = ProfileForm()
         return render(request, 'profile/create.html', context)
-    if request.method == "POST":
+    def post(self, request):
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()

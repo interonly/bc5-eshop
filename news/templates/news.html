@@ -15,7 +15,7 @@
     {% for new in filter_object.qs %}
         <div class="card bg-dark text-white">
             <div class="card-body">
-                <h1 style="text-align: center;"><a href="/news/{{ new.id }}/" style="color: white; font-size: 18px;">{{ new.title }}</a></h1>
+                <h1 style="text-align: center;"><a href="/new/{{ new.pk }}/" style="color: white; font-size: 18px;">{{ new.title }}</a></h1>
             </div>
         </div>
     {% endfor %}

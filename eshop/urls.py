@@ -15,8 +15,8 @@ urlpatterns = [
     path('signout/', signout, name='signout'),
 
     #product
-    path('product/<int:id>/', product_detail, name='product-detail'),
-    path('product-create/', product_create, name='product-create'),
+    path('product/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
+    path('product-create/', ProductCreateView.as_view(), name='product-create'),
     path('product-update/<int:id>/', product_update, name='product-update'),
 
     #costumer
@@ -26,13 +26,13 @@ urlpatterns = [
     #profile/user
     path('users/', users_list, name='users'),
     path('user/<int:id>/', user_cabinet, name='user-cabinet'), 
-    path('profile-create/', profile_create, name ='profile-create'),
+    path('profile-create/', ProfileCreateView.as_view(), name ='profile-create'),
     path('profile-update/<int:id>/', profile_update, name='profile-update'),
 
     #news
     path('news/', news_view, name='news'),
-    path('news/<int:id>/', news_detail, name='news-detail'),
-    path('new-create/', new_create, name='new-create'),
+    path('new/<int:pk>/', NewDetailView.as_view(), name='news-detail'),
+    path('new-create/', NewCreateView.as_view(), name='new-create'),
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

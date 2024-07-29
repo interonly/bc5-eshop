@@ -27,7 +27,7 @@
         <tbody>
             {% for product in filter_object.qs %}
                 <tr>
-                    <td><a href="product/{{ product.id }}/" style="color: black">{{ product.name }}</a></td>
+                    <td><a href="product/{{ product.pk }}/" style="color: black">{{ product.name }}</a></td>
                     <td>{{ product.category }}</td>
                     <td>{{ product.qty }}</td>
                     <td>{{ product.price }}</td>
