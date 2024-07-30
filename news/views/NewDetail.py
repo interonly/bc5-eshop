@@ -1,11 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from news.models import New
 from costumerapp.models import Costumer
 from django.views import View
 
 class NewDetailView(View):
     def get(self, request, pk):
-        news_object = New.objects.get(pk=pk)
+        try:
+            news_object = New.objects.get(pk=pk)
+        except New.DoesNotExist:
+            messages.error(request, "Такой новости не существует!")
+            return redirect('news')
         news_object.views += 1
         if request.user.is_authenticated:
             user = request.user

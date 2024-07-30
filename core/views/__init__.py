@@ -6,12 +6,12 @@ from .signout import *
 from .search import *
 
 # product
-from .Product.ProductDetail import *
-from .Product.ProductCreate import *
-from .Product.product_update import *
+from .product.ProductDetail import *
+from .product.ProductCreate import *
+from .product.product_update import *
 
 # user/profile
-from .User.user_cabinet import *
-from .User.users_list import *
-from .User.ProfileCreate import *
-from .User.profile_update import *
+from .profile.user_cabinet import *
+from .profile.users_list import *
+from .profile.ProfileCreate import *
+from .profile.profile_update import *

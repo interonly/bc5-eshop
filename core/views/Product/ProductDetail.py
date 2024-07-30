@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.contrib import messages
 from core.models import Product
 from costumerapp.models import Costumer
 from django.views import View
@@ -6,7 +7,11 @@ from django.views import View
 
 class ProductDetailView(View):
     def get(self, request, pk):
-        product_object = Product.objects.get(pk=pk)
+        try:
+            product_object = Product.objects.get(pk=pk)
+        except Product.DoesNotExist:
+            messages.error(request, "Такого товара не существует!")
+            return redirect('homepage')
         product_object.views_qty += 1
         if request.user.is_authenticated:
             user = request.user
